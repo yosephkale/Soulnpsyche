@@ -1,0 +1,12 @@
+# Soul N Psyche — robots.txt
+# Allow all crawlers to index the whole site
+
+User-agent: *
+Allow: /
+
+# Disallow admin/dev assets
+Disallow: /src/
+Disallow: /node_modules/
+
+# Sitemap location
+Sitemap: https://www.soulnpsyche.com/sitemap.xml

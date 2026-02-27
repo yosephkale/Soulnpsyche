@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const WEB3FORMS_ACCESS_KEY = "78cc90ec-773d-4f45-ba15-71caffedc326"; // 🔑 Replace with your Web3Forms access key
+
 const initialState = { name: "", email: "", phone: "", message: "" };
 
 const inputClass =
@@ -8,15 +10,46 @@ const inputClass =
 const ContactForm = () => {
     const [form, setForm] = useState(initialState);
     const [submitted, setSubmitted] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setSubmitted(true);
-        setForm(initialState);
+        setLoading(true);
+        setError("");
+
+        try {
+            const payload = {
+                access_key: WEB3FORMS_ACCESS_KEY,
+                subject: "New Waitlist Submission – Soul N Psyche",
+                from_name: "Soul N Psyche Website",
+                ...form,
+                botcheck: "",
+            };
+
+            const res = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", Accept: "application/json" },
+                body: JSON.stringify(payload),
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                setSubmitted(true);
+                setForm(initialState);
+            } else {
+                setError(data.message || "Something went wrong. Please try again.");
+            }
+        } catch {
+            setError("Network error. Please check your connection and try again.");
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -49,8 +82,10 @@ const ContactForm = () => {
                     {/* Success state */}
                     {submitted ? (
                         <div className="flex flex-col items-center text-center py-8 gap-4">
-                            <div className="w-16 h-16 rounded-full flex items-center justify-center text-white text-2xl"
-                                style={{ background: "linear-gradient(135deg, #e8588a, #9b5de5)" }}>
+                            <div
+                                className="w-16 h-16 rounded-full flex items-center justify-center text-white text-2xl"
+                                style={{ background: "linear-gradient(135deg, #e8588a, #9b5de5)" }}
+                            >
                                 ✓
                             </div>
                             <h3 className="font-heading text-2xl font-bold text-dark">
@@ -131,15 +166,47 @@ const ContactForm = () => {
                                 />
                             </div>
 
+                            {/* Error message */}
+                            {error && (
+                                <p className="font-body text-xs text-red-500 text-center -mt-1">{error}</p>
+                            )}
+
                             {/* Submit */}
                             <button
                                 type="submit"
-                                className="w-full mt-1 py-3.5 rounded-lg text-white font-body text-sm font-semibold hover:opacity-90 active:scale-[0.99] transition-all duration-200"
+                                disabled={loading}
+                                className="w-full mt-1 py-3.5 rounded-lg text-white font-body text-sm font-semibold hover:opacity-90 active:scale-[0.99] transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                                 style={{
                                     background: "linear-gradient(90deg, #e8588a 0%, #9b5de5 100%)",
                                 }}
                             >
-                                Join the Waitlist
+                                {loading ? (
+                                    <>
+                                        <svg
+                                            className="animate-spin h-4 w-4 text-white"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <circle
+                                                className="opacity-25"
+                                                cx="12"
+                                                cy="12"
+                                                r="10"
+                                                stroke="currentColor"
+                                                strokeWidth="4"
+                                            />
+                                            <path
+                                                className="opacity-75"
+                                                fill="currentColor"
+                                                d="M4 12a8 8 0 018-8v8H4z"
+                                            />
+                                        </svg>
+                                        Sending…
+                                    </>
+                                ) : (
+                                    "Join the Waitlist"
+                                )}
                             </button>
 
                         </form>
