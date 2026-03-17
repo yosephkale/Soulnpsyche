@@ -1,16 +1,27 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import logo from "../assets/Untitled_design__1_-removebg-preview.png";
 
 const navLinks = [
-    { label: "Philosophy", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Why Us", href: "#why-choose-us" },
-    { label: "Facilities", href: "#spaces" },
-    { label: "FAQ", href: "#faq" },
+    { label: "Philosophy", target: "#about" },
+    { label: "Team", target: "/team" },
+    { label: "Services", target: "#services" },
+    { label: "Testimonials", target: "#testimonials" },
+    { label: "Why Us", target: "#why-choose-us" },
+    { label: "Facilities", target: "#spaces" },
+    { label: "FAQ", target: "#faq" },
 ];
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const { pathname } = useLocation();
+
+    const resolveHref = (target) => {
+        if (target.startsWith("#")) {
+            return pathname === "/" ? target : `/${target}`;
+        }
+        return target;
+    };
 
     return (
         <header className="sticky top-0 z-50 bg-light/80 backdrop-blur-md border-b border-gray-100">
@@ -18,7 +29,7 @@ const Navbar = () => {
                 <div className="flex items-center justify-between h-16">
 
                     {/* Logo + Brand Name */}
-                    <a href="#hero" className="flex items-center gap-2">
+                    <a href={pathname === "/" ? "#hero" : "/#hero"} className="flex items-center gap-2">
                         <img
                             src={logo}
                             alt="Soul N Psyche Logo"
@@ -30,8 +41,8 @@ const Navbar = () => {
                     <nav className="hidden md:flex items-center gap-8">
                         {navLinks.map((link) => (
                             <a
-                                key={link.href}
-                                href={link.href}
+                                key={link.label}
+                                href={resolveHref(link.target)}
                                 className="font-body text-sm text-dark/70 hover:text-primary transition-colors duration-200"
                             >
                                 {link.label}
@@ -42,13 +53,13 @@ const Navbar = () => {
                     {/* CTA + Hamburger */}
                     <div className="flex items-center gap-4">
                         <a
-                            href="#contact"
+                            href={pathname === "/" ? "#contact" : "/#contact"}
                             className="hidden md:inline-flex items-center px-5 py-2 rounded-full text-white font-body text-sm font-medium transition-all duration-200 hover:opacity-90 hover:shadow-lg"
                             style={{
                                 background: "linear-gradient(135deg, #f94771 0%, #ff6b35 100%)",
                             }}
                         >
-                            Join Waitlist
+                            Join the community
                         </a>
 
                         {/* Hamburger */}
@@ -78,8 +89,8 @@ const Navbar = () => {
                 <nav className="flex flex-col px-4 pb-4 gap-4 bg-light/95 backdrop-blur-md">
                     {navLinks.map((link) => (
                         <a
-                            key={link.href}
-                            href={link.href}
+                            key={link.label}
+                            href={resolveHref(link.target)}
                             onClick={() => setMenuOpen(false)}
                             className="font-body text-sm text-dark/70 hover:text-primary transition-colors duration-200 py-1 border-b border-gray-100"
                         >
@@ -87,14 +98,14 @@ const Navbar = () => {
                         </a>
                     ))}
                     <a
-                        href="#contact"
+                        href={pathname === "/" ? "#contact" : "/#contact"}
                         onClick={() => setMenuOpen(false)}
                         className="inline-flex justify-center items-center px-5 py-2 rounded-full text-white font-body text-sm font-medium hover:opacity-90 transition-all duration-200 mt-2"
                         style={{
                             background: "linear-gradient(135deg, #f94771 0%, #ff6b35 100%)",
                         }}
                     >
-                        Join Waitlist
+                        Join the community
                     </a>
                 </nav>
             </div>

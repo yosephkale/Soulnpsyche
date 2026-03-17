@@ -7,7 +7,7 @@ const FAQ = () => {
     const toggle = (id) => setOpenId(openId === id ? null : id);
 
     return (
-        <section id="faq" className="py-20 lg:py-28 bg-white">
+        <section id="faq" className="py-16 sm:py-20 lg:py-24 bg-white">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Centered Title */}

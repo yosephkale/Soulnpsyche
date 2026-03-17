@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
-
+import PsychologyImage from "../assets/PsychologyImage.webp";
 const details = [
     {
-        heading: "Psychiatry — Clinical Care with Compassion",
+        heading: "Psychiatry, Clinical Care with Compassion",
         description:
             "Comprehensive evaluations, diagnosis, and medication management in a warm, supportive environment.",
         bullets: [
@@ -17,7 +17,7 @@ const details = [
         imageLeft: false,
     },
     {
-        heading: "Psychology — Therapy Designed for Deep Healing",
+        heading: "Psychology, Therapy Designed for Deep Healing",
         description:
             "Therapeutic sessions that help you heal, gain clarity, and restore emotional balance.",
         bullets: [
@@ -28,11 +28,11 @@ const details = [
         ],
         checkColor: "#7c3aed",
         checkBg: "#f5f3ff",
-        image: "https://images.unsplash.com/photo-1573497491765-dccce02b29df?w=800&q=80",
+        image: PsychologyImage,
         imageLeft: true,
     },
     {
-        heading: "Yoga — Movement, Breath, and Inner Peace",
+        heading: "Yoga and Healing",
         description:
             "Mind-body practices focused on grounding, nervous system regulation, and holistic restoration.",
         bullets: [
@@ -68,7 +68,7 @@ const ServiceDetails = () => {
     }, []);
 
     return (
-        <section id="service-details" className="py-20 lg:py-20 bg-white">
+        <section id="service-details" className="py-16 sm:py-20 lg:py-24 bg-white">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-24 lg:gap-32">
                 {details.map((item, i) => (
                     <div

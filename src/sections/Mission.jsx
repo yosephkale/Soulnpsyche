@@ -23,7 +23,7 @@ const Mission = () => {
     return (
         <section
             id="mission"
-            className="relative py-20 lg:py-28 overflow-hidden"
+            className="relative py-16 sm:py-20 lg:py-24 overflow-hidden"
             style={{
                 backgroundImage: `url(${missionBg})`,
                 backgroundSize: "cover",
@@ -56,7 +56,7 @@ const Mission = () => {
                 </h2>
 
                 <p className="font-body text-lg sm:text-xl text-dark/70 leading-relaxed max-w-2xl mx-auto">
-                    To bring together the science of the mind and the wisdom of the soul —
+                    To bring together the science of the mind and the wisdom of the soul,
                     creating a place where people feel{" "}
                     <span className="font-semibold text-dark/90">seen</span>,{" "}
                     <span className="font-semibold text-dark/90">supported</span>, and{" "}

@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const WEB3FORMS_ACCESS_KEY = "78cc90ec-773d-4f45-ba15-71caffedc326"; // 🔑 Replace with your Web3Forms access key
 
-const initialState = { name: "", email: "", phone: "", message: "" };
+const initialState = { firstName: "", lastName: "", email: "", whatsapp: "", message: "" };
 
 const inputClass =
     "w-full font-body text-sm text-dark bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 placeholder:text-dark/35";
@@ -55,7 +55,7 @@ const ContactForm = () => {
     return (
         <section
             id="contact"
-            className="py-20 lg:pt-18 lg:pb-28 relative overflow-hidden"
+            className="py-16 sm:py-20 lg:py-24 relative overflow-hidden"
             style={{
                 background:
                     "linear-gradient(135deg, #e8b4c0 0%, #d49ab0 30%, #c48aaa 60%, #b87aab 100%)",
@@ -104,20 +104,36 @@ const ContactForm = () => {
                     ) : (
                         <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
 
-                            {/* Name */}
-                            <div className="flex flex-col gap-1.5">
-                                <label className="font-body text-sm font-medium text-dark">
-                                    Name <span className="text-primary">*</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    required
-                                    placeholder="Your full name"
-                                    value={form.name}
-                                    onChange={handleChange}
-                                    className={inputClass}
-                                />
+                            {/* First Name + Last Name */}
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="flex flex-col gap-1.5">
+                                    <label className="font-body text-sm font-medium text-dark">
+                                        First Name <span className="text-primary">*</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="firstName"
+                                        required
+                                        placeholder="First name"
+                                        value={form.firstName}
+                                        onChange={handleChange}
+                                        className={inputClass}
+                                    />
+                                </div>
+                                <div className="flex flex-col gap-1.5">
+                                    <label className="font-body text-sm font-medium text-dark">
+                                        Last Name <span className="text-primary">*</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="lastName"
+                                        required
+                                        placeholder="Last name"
+                                        value={form.lastName}
+                                        onChange={handleChange}
+                                        className={inputClass}
+                                    />
+                                </div>
                             </div>
 
                             {/* Email */}
@@ -136,16 +152,16 @@ const ContactForm = () => {
                                 />
                             </div>
 
-                            {/* Phone */}
+                            {/* WhatsApp */}
                             <div className="flex flex-col gap-1.5">
                                 <label className="font-body text-sm font-medium text-dark">
-                                    Phone
+                                    WhatsApp No
                                 </label>
                                 <input
                                     type="tel"
-                                    name="phone"
-                                    placeholder="(555) 123-4567"
-                                    value={form.phone}
+                                    name="whatsapp"
+                                    placeholder="+91 98765 43210"
+                                    value={form.whatsapp}
                                     onChange={handleChange}
                                     className={inputClass}
                                 />
@@ -177,7 +193,7 @@ const ContactForm = () => {
                                 disabled={loading}
                                 className="w-full mt-1 py-3.5 rounded-lg text-white font-body text-sm font-semibold hover:opacity-90 active:scale-[0.99] transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                                 style={{
-                                    background: "linear-gradient(90deg, #e8588a 0%, #9b5de5 100%)",
+                                    background: "linear-gradient(135deg, #f94771 0%, #ff6b35 100%)",
                                 }}
                             >
                                 {loading ? (
@@ -205,7 +221,7 @@ const ContactForm = () => {
                                         Sending…
                                     </>
                                 ) : (
-                                    "Join the Waitlist"
+                                    "Join the community"
                                 )}
                             </button>
 

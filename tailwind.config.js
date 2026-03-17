@@ -13,8 +13,8 @@ export default {
         light: "#F9FAFB",
       },
       fontFamily: {
-        heading: ["Apple Garamond", "Garamond", "Georgia", "serif"],
-        body: ["Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
+        heading: ['"DM Serif Display"', "Georgia", "serif"],
+        body: ['"Roboto Mono"', "monospace"],
       },
     },
   },

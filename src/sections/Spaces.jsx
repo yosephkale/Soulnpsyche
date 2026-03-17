@@ -1,27 +1,16 @@
 import { useEffect, useRef } from "react";
-
+import YogaStudioImage from "../assets/YogaStudioImage.webp";
 const spaces = [
     {
-        label: "Private Suites",
-        image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80",
-    },
-    {
-        label: "Meditation Lounge",
-        image: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=800&q=80",
-    },
-    {
         label: "Yoga Studio",
-        image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80",
-    },
-    {
-        label: "Healing-Inspired Interiors",
-        image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80",
+        image: YogaStudioImage,
     },
 ];
 
 const Spaces = () => {
     const titleRef = useRef(null);
-    const cardsRef = useRef([]);
+    const imageRef = useRef(null);
+    const contentRef = useRef(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -36,54 +25,69 @@ const Spaces = () => {
             { threshold: 0.1 }
         );
         if (titleRef.current) observer.observe(titleRef.current);
-        cardsRef.current.forEach((c) => { if (c) observer.observe(c); });
+        if (imageRef.current) observer.observe(imageRef.current);
+        if (contentRef.current) observer.observe(contentRef.current);
         return () => observer.disconnect();
     }, []);
 
     return (
-        <section id="spaces" className="py-16 lg:py-24 bg-white">
-            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-
-                {/* Title */}
-                <div ref={titleRef} className="sp-title text-center mb-12">
-                    <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-dark">
+        <section id="spaces" className="pb-16 sm:pb-20 lg:pb-24">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div ref={titleRef} className="sp-title text-center mb-10 sm:mb-12">
+                    <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-dark mb-3">
                         Our Spaces
                     </h2>
                 </div>
 
-                {/* 2×2 Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    {spaces.map((space, i) => (
-                        <div
-                            key={space.label}
-                            ref={(el) => (cardsRef.current[i] = el)}
-                            className="sp-card group relative rounded-2xl overflow-hidden h-64 sm:h-72 lg:h-80 cursor-pointer"
-                            style={{ "--delay": `${i * 100}ms` }}
-                        >
-                            {/* Image with zoom on hover */}
-                            <img
-                                src={space.image}
-                                alt={space.label}
-                                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                            />
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-                            {/* Gradient overlay — deepens on hover */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-opacity duration-300 group-hover:opacity-90" />
+                    <div
+                        ref={imageRef}
+                        className="sp-image relative rounded-3xl overflow-hidden border border-gray-100 shadow-md"
+                    >
+                        <img
+                            src={spaces[0].image}
+                            alt={spaces[0].label}
+                            className="w-full h-[300px] sm:h-[360px] lg:h-[400px] object-cover"
+                        />
+                    </div>
 
-                            {/* Label — slides up on hover */}
-                            <div className="absolute bottom-5 left-5 translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
-                                <p className="font-heading text-lg font-semibold text-white leading-tight drop-shadow">
-                                    {space.label}
-                                </p>
-                            </div>
+                    <div ref={contentRef} className="sp-content">
+                        <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-dark leading-tight mb-6">
+                            Yoga Studio
+                        </h2>
 
-                            {/* Accent line at bottom — sweeps in on hover */}
+                        <div className="rounded-3xl border border-primary/15 bg-white p-6 sm:p-7 shadow-sm relative overflow-hidden">
                             <div
-                                className="absolute bottom-0 left-0 h-[3px] w-0 group-hover:w-full transition-all duration-500 ease-out rounded-full"
+                                className="absolute inset-x-0 top-0 h-1"
                                 style={{ background: "linear-gradient(90deg, #f94771, #ff6b35)" }}
                             />
+
+                            <div className="flex items-start gap-3 mb-5">
+                                <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                                        <path d="M21 10c0 6.5-9 12-9 12S3 16.5 3 10a9 9 0 1 1 18 0z" />
+                                        <circle cx="12" cy="10" r="3" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p className="font-body text-xs uppercase tracking-[0.2em] text-dark/60 mb-1">Address</p>
+                                    <p className="font-heading text-2xl sm:text-3xl text-dark">Nirvana Yogshala</p>
+                                </div>
+                            </div>
+
+                            <div className="rounded-2xl bg-gray-50 border border-gray-200 px-4 sm:px-5 py-4">
+                                <p className="font-body text-base sm:text-lg text-dark leading-relaxed">
+                                    Urban Estate Phase 2, Patiala, Behind Sip Sip Spot Cafe
+                                </p>
+                            </div>
                         </div>
-                    ))}
+
+                        <div
+                            className="mt-6 h-1 w-20 rounded-full"
+                            style={{ background: "linear-gradient(90deg, #f94771, #ff6b35)" }}
+                        />
+                    </div>
                 </div>
             </div>
 
@@ -97,16 +101,23 @@ const Spaces = () => {
                     opacity: 1;
                     transform: translateY(0);
                 }
-                .sp-card {
+                .sp-image {
                     opacity: 0;
-                    transform: translateY(32px) scale(0.97);
-                    transition:
-                        opacity 0.65s cubic-bezier(.22,1,.36,1) var(--delay, 0ms),
-                        transform 0.65s cubic-bezier(.22,1,.36,1) var(--delay, 0ms);
+                    transform: translateX(-32px);
+                    transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1);
                 }
-                .sp-card.sp-visible {
+                .sp-image.sp-visible {
                     opacity: 1;
-                    transform: translateY(0) scale(1);
+                    transform: translateX(0);
+                }
+                .sp-content {
+                    opacity: 0;
+                    transform: translateX(32px);
+                    transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1);
+                }
+                .sp-content.sp-visible {
+                    opacity: 1;
+                    transform: translateX(0);
                 }
             `}</style>
         </section>

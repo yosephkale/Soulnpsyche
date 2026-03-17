@@ -5,17 +5,17 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Roboto Mono", monospace;
   }
 
-  /* Headings: Apple Garamond italic */
+  /* Headings: DM Serif Display */
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    font-family: "Apple Garamond", Garamond, Georgia, serif;
+    font-family: "DM Serif Display", Georgia, serif;
     font-style: italic;
   }
 }

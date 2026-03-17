@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 const steps = [
     {
         number: "01",
-        title: "Follow Us on Social Media",
+        title: "Join our community",
         description: "Join our community for FREE mental wellness content, tips, and insights delivered daily",
         color: "#f94771",
         lightBg: "#fff0f3",
@@ -29,7 +29,7 @@ const steps = [
     {
         number: "03",
         title: "Book a Wellness Discovery Call",
-        description: "Start your personalized path to healing — a free call to find the right care for you",
+        description: "Start your personalized path to healing, a free call to find the right care for you",
         color: "#0d9488",
         lightBg: "#f0fdfa",
         icon: (
@@ -58,7 +58,7 @@ const Process = () => {
     }, []);
 
     return (
-        <section id="process" className="py-16 lg:py-18 bg-white">
+        <section id="process" className="py-16 sm:py-20 lg:py-24 bg-white">
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Title */}

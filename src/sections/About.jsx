@@ -66,7 +66,7 @@ const About = () => {
     }, []);
 
     return (
-        <section id="about" className="py-14 lg:py-20 bg-white overflow-hidden">
+        <section id="about" className="py-16 sm:py-20 lg:py-24 bg-white overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col lg:flex-row lg:items-center gap-16 lg:gap-24">
 
@@ -80,8 +80,8 @@ const About = () => {
                             Our Philosophy
                         </p>
                         <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-dark leading-tight mb-6">
-                            What Makes Soul N Psyche{" "}
-                            <span style={{ color: "#f94771" }}>Different</span>
+                            What Makes{" "}
+                            <span className="whitespace-nowrap">Soul N Psyche <span style={{ color: "#f94771" }}>Different</span></span>
                         </h2>
                         <p className="font-body text-base sm:text-lg text-dark/60 leading-relaxed">
                             Soul N Psyche blends modern mental health science with holistic

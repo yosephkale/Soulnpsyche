@@ -8,7 +8,7 @@ const reasons = [
                 <polyline points="9 22 9 12 15 12 15 22" />
             </svg>
         ),
-        title: "Private therapy suites",
+        title: "Private Therapy Suites",
         description: "Comfortable, confidential spaces designed for healing",
     },
     {
@@ -19,7 +19,7 @@ const reasons = [
                 <polyline points="16 3 18 5 22 1" />
             </svg>
         ),
-        title: "Expert licensed professionals",
+        title: "Expert Licensed Professionals",
         description: "Experienced psychiatrists, psychologists, and yoga instructors",
     },
     {
@@ -28,7 +28,7 @@ const reasons = [
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
             </svg>
         ),
-        title: "Holistic treatment approach",
+        title: "Holistic Treatment Approach",
         description: "Integrating mind, body, and soul for complete wellness",
     },
     {
@@ -37,7 +37,7 @@ const reasons = [
                 <path d="M12 2l2.09 6.26L20 10l-5.91 4.26L16.18 21 12 17.27 7.82 21l2.09-6.74L4 10l5.91-1.74z" />
             </svg>
         ),
-        title: "Luxury healing environment",
+        title: "Luxury Healing Environment",
         description: "Every detail designed for your comfort and peace",
     },
     {
@@ -47,7 +47,7 @@ const reasons = [
                 <path d="M7 11V7a5 5 0 0 1 10 0v4" />
             </svg>
         ),
-        title: "Confidential care",
+        title: "Confidential Care",
         description: "Your privacy and trust are our highest priorities",
     },
     {
@@ -56,7 +56,7 @@ const reasons = [
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
             </svg>
         ),
-        title: "Meaningful transformation",
+        title: "Meaningful Transformation",
         description: "Designed for deep, lasting change and personal growth",
     },
 ];
@@ -83,7 +83,7 @@ const WhyChooseUs = () => {
     }, []);
 
     return (
-        <section id="why-choose-us" className="py-14 lg:py-18 bg-white">
+        <section id="why-choose-us" className="py-16 sm:py-20 lg:py-24 bg-white">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Title */}
