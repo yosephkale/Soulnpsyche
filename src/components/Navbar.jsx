@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/Untitled_design__1_-removebg-preview.png";
 
 const navLinks = [
@@ -40,13 +40,23 @@ const Navbar = () => {
                     {/* Desktop Nav */}
                     <nav className="hidden md:flex items-center gap-8">
                         {navLinks.map((link) => (
-                            <a
-                                key={link.label}
-                                href={resolveHref(link.target)}
-                                className="font-body text-sm text-dark/70 hover:text-primary transition-colors duration-200"
-                            >
-                                {link.label}
-                            </a>
+                            link.target.startsWith("#") ? (
+                                <a
+                                    key={link.label}
+                                    href={resolveHref(link.target)}
+                                    className="font-body text-sm text-dark/70 hover:text-primary transition-colors duration-200"
+                                >
+                                    {link.label}
+                                </a>
+                            ) : (
+                                <Link
+                                    key={link.label}
+                                    to={link.target}
+                                    className="font-body text-sm text-dark/70 hover:text-primary transition-colors duration-200"
+                                >
+                                    {link.label}
+                                </Link>
+                            )
                         ))}
                     </nav>
 
@@ -88,14 +98,25 @@ const Navbar = () => {
             >
                 <nav className="flex flex-col px-4 pb-4 gap-4 bg-light/95 backdrop-blur-md">
                     {navLinks.map((link) => (
-                        <a
-                            key={link.label}
-                            href={resolveHref(link.target)}
-                            onClick={() => setMenuOpen(false)}
-                            className="font-body text-sm text-dark/70 hover:text-primary transition-colors duration-200 py-1 border-b border-gray-100"
-                        >
-                            {link.label}
-                        </a>
+                        link.target.startsWith("#") ? (
+                            <a
+                                key={link.label}
+                                href={resolveHref(link.target)}
+                                onClick={() => setMenuOpen(false)}
+                                className="font-body text-sm text-dark/70 hover:text-primary transition-colors duration-200 py-1 border-b border-gray-100"
+                            >
+                                {link.label}
+                            </a>
+                        ) : (
+                            <Link
+                                key={link.label}
+                                to={link.target}
+                                onClick={() => setMenuOpen(false)}
+                                className="font-body text-sm text-dark/70 hover:text-primary transition-colors duration-200 py-1 border-b border-gray-100"
+                            >
+                                {link.label}
+                            </Link>
+                        )
                     ))}
                     <a
                         href={pathname === "/" ? "#contact" : "/#contact"}
