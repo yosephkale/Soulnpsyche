@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 const steps = [
     {
         number: "01",
-        title: "Join our community",
+        title: "Join Our Community",
         description: "Join our community for FREE mental wellness content, tips, and insights delivered daily",
         color: "#f94771",
         lightBg: "#fff0f3",
