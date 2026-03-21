@@ -6,7 +6,7 @@ const navLinks = [
     { label: "Philosophy", target: "#about" },
     { label: "Team", target: "/team" },
     { label: "Services", target: "#services" },
-    { label: "Testimonials", target: "#testimonials" },
+    // { label: "Testimonials", target: "#testimonials" },
     { label: "Why Us", target: "#why-choose-us" },
     { label: "Facilities", target: "#spaces" },
     { label: "FAQ", target: "#faq" },

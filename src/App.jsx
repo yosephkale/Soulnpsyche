@@ -6,7 +6,7 @@ import Mission from "./sections/Mission";
 import Services from "./sections/Services";
 import Spaces from "./sections/Spaces";
 import ServiceDetails from "./sections/ServiceDetails";
-import Testimonial from "./sections/Testimonial";
+// import Testimonial from "./sections/Testimonial";
 import Process from "./sections/Process";
 import WhyChooseUs from "./sections/WhyChooseUs";
 import FAQ from "./sections/FAQ";
@@ -22,7 +22,7 @@ const HomePage = () => (
     <ServiceDetails />
     <WhyChooseUs />
     <Spaces />
-    <Testimonial />
+    {/* <Testimonial /> */}
     <Process />
     <FAQ />
     <ContactForm />

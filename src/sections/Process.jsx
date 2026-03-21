@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 const steps = [
     {
         number: "01",
-        title: "Join Our Community",
+        title: "Follow Us On Instagram",
         description: "Join our community for FREE mental wellness content, tips, and insights delivered daily",
         color: "#f94771",
         lightBg: "#fff0f3",
@@ -15,7 +15,7 @@ const steps = [
     },
     {
         number: "02",
-        title: "Download Free Resources",
+        title: "Download Resources",
         description: "Get our exclusive E-book packed with evidence-based tools for emotional well-being",
         color: "#7c3aed",
         lightBg: "#f5f3ff",
@@ -28,7 +28,7 @@ const steps = [
     },
     {
         number: "03",
-        title: "Book a Wellness Discovery Call",
+        title: "Book a Discovery Call",
         description: "Start your personalized path to healing, a free call to find the right care for you",
         color: "#0d9488",
         lightBg: "#f0fdfa",
